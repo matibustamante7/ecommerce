@@ -1,0 +1,16 @@
+const url = 'https://livescore-football.p.rapidapi.com/soccer/league-table?country_code=england&league_code=premier-league';
+const options = {
+	method: 'GET',
+	headers: {
+		'X-RapidAPI-Key': 'SIGN-UP-FOR-KEY',
+		'X-RapidAPI-Host': 'livescore-football.p.rapidapi.com'
+	}
+};
+
+try {
+	const response = await fetch(url, options);
+	const result = await response.text();
+	console.log(result);
+} catch (error) {
+	console.error(error);
+}
