@@ -7,3 +7,5 @@ export const EMPTY_CART= 'EMPTY_CART';
 export const DELETE_PROD_TO_CART = 'DELETE_PROD_TO_CART';
 export const NEW_CANT_PROD_CART = 'NEW_CANT_PROD_CART';
 export const SEARCH_BAR = 'SEARCH_BAR';
+export const RATING_SELECT = 'RATING_SELECT';
+export const NEW_USER = 'NEW_USER'

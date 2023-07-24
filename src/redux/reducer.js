@@ -1,4 +1,4 @@
-import { ADD_TO_CART, DELETE_PROD_TO_CART, EMPTY_CART, FILTER_CATEGORY, GET_PRODUCTS, GET_PRODUCT_DETAIL, NEW_CANT_PROD_CART, ORDER_BY_PRICE, SEARCH_BAR } from "./actionsTypes";
+import { ADD_TO_CART, DELETE_PROD_TO_CART, EMPTY_CART, FILTER_CATEGORY, GET_PRODUCTS, GET_PRODUCT_DETAIL, NEW_CANT_PROD_CART, NEW_USER, ORDER_BY_PRICE, RATING_SELECT, SEARCH_BAR } from "./actionsTypes";
 
 
 const initialState = {
@@ -6,6 +6,7 @@ const initialState = {
     allProducts: [],
     productDetail: {},
     cartItems: [],
+    users:[]
 }
 
 const reducer = (state = initialState, { type, payload }) => {
@@ -90,11 +91,33 @@ const reducer = (state = initialState, { type, payload }) => {
                 ),
             };
         case SEARCH_BAR:
-            let producto = state.allProducts.filter((item)=> item.title.toLowerCase().includes(payload));
+            //busca de manera dinamica al escribir en la barra al tener 2 estados con los productos 
+            let producto = state.allProducts.filter((item) => item.title.toLowerCase().includes(payload));
             return{
                 ...state,
-                products: producto
+                products: producto 
             }
+        case RATING_SELECT:
+            const sortRating = payload === '1' ?
+            [...state.products].sort(function (a, b) {
+                // return menos a mas
+                return a.rating?.rate - b.rating?.rate;
+            }) :
+            [...state.products].sort(function (a, b) {
+                // return menos a mas
+                return b.rating?.rate - a.rating?.rate
+            })
+            return{
+                ...state,
+                products: sortRating
+            }
+        case NEW_USER:
+            const newUser = state.users.find((user)=> user.id !== payload.id);
+            
+            return{
+                ...state,
+                users: newUser
+            } 
         default:
             return { ...state }
     }

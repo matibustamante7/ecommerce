@@ -1,5 +1,5 @@
 import axios from "axios"
-import { ADD_TO_CART, DELETE_PROD_TO_CART, EMPTY_CART, FILTER_CATEGORY, GET_PRODUCTS, GET_PRODUCT_DETAIL, NEW_CANT_PROD_CART, ORDER_BY_PRICE, SEARCH_BAR } from "./actionsTypes";
+import { ADD_TO_CART, DELETE_PROD_TO_CART, EMPTY_CART, FILTER_CATEGORY, GET_PRODUCTS, GET_PRODUCT_DETAIL, NEW_CANT_PROD_CART, NEW_USER, ORDER_BY_PRICE, RATING_SELECT, SEARCH_BAR } from "./actionsTypes";
 
 
 export const getProducts =() =>{
@@ -70,5 +70,19 @@ export const searchBarProduct = (producto) => {
     return({
         type: SEARCH_BAR,
         payload: producto
+    })
+}
+
+export const orderByRating = (rate) => {
+    return({
+        type: RATING_SELECT,
+        payload: rate
+    })
+}
+
+export const newUser = (newUser) => {
+    return({
+        type: NEW_USER,
+        payload: newUser
     })
 }

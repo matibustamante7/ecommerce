@@ -6,9 +6,7 @@ import { addToCart, findProductDetail } from "../../redux/actions";
 import theme from "../../theme";
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
-const styleButtonBack = () =>{
 
-}
 
 export default function ProductDetail() {
     const { id } = useParams();
@@ -19,15 +17,14 @@ export default function ProductDetail() {
     useEffect(() => {
         dispatch(findProductDetail(id))
     }, [])
-    // console.log(productDetail);
+    
     const handleBack = () => {
         navigate('/')
     }
 
     const handleAddToCart = (productDetail) => {
        dispatch(addToCart(productDetail));
-    //    carrito.push(producto)
-    //    console.log(carrito);
+    //    console.log(productDetail);
    }
 
     return (
@@ -60,7 +57,7 @@ export default function ProductDetail() {
                     <Button
                      variant="contained"
                       sx={{ mt: 4, backgroundColor: theme.palette.button.success }}
-                      onClick={handleAddToCart(productDetail)}>Add to cart</Button>
+                      onClick={()=>handleAddToCart(productDetail)}>Add to cart</Button>
                 </Box>
             </Box>
         </Container>

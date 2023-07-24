@@ -16,7 +16,7 @@ export default function CardProduct({producto, addToCartProp}) {
 
     const handleDetail = () =>{
       navigate(`/${producto.id}`)
-      console.log('log de id en handle ', producto.id);
+      // console.log('log de id en handle ', producto.id);
     }
 
 
