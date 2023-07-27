@@ -24,8 +24,8 @@ export default function ButtonAppBar() {
   const cartItems = useSelector((state) => state.cartItems);
 
   //cantidad total de productos en carrito
-  const cantTotalCartItems = (cartItems)=>{
-    let cantTotal =0;
+  const cantTotalCartItems = (cartItems) => {
+    let cantTotal = 0;
     for (const item of cartItems) {
       cantTotal += item.cantidad;
     }
@@ -92,10 +92,10 @@ export default function ButtonAppBar() {
   }
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static" sx={{ backgroundColor: theme.palette.primary.main }}>
-        <Toolbar sx={{ display: 'flex', justifyContent: 'space-between', width: '60%', m: 'auto' }}>
+      <AppBar position="fixed" sx={{ backgroundColor: theme.palette.primary.main }}>
+        <Toolbar sx={{ display: 'flex', justifyContent: 'center', gap:20  }}>
 
-            <Typography variant='h5'onClick={() => hadleGoHome()} sx={{color:theme.palette.background.subHeader, cursor:"pointer"}}>React Shop</Typography>
+          <Typography variant='h5' onClick={() => hadleGoHome()} sx={{ color: theme.palette.background.subHeader, cursor: "pointer" }}>React Shop</Typography>
 
 
           <Search sx={{ width: 'xl' }}
@@ -108,21 +108,21 @@ export default function ButtonAppBar() {
               inputProps={{ 'aria-label': 'search' }}
             />
           </Search>
-          <Box
-            sx={{ display: 'flex', alignItems: 'center', m: 'auto' }}>
-            <FavoriteBorderSharpIcon />
+          {/* <Box */}
+            {/* sx={{ display: 'flex', alignItems: 'center', m: 'auto' }}> */}
+            {/* <FavoriteBorderSharpIcon />
             <Button color='inherit' sx={{ m: 2 }} onClick={goToLogin}>
               <LoginTwoToneIcon />
               Login
-            </Button>
+            </Button> */}
             <Badge color='error' badgeContent={prodInCart} onClick={goToCart} sx={{ cursor: 'pointer' }}>
               <ShoppingCartIcon color='#fff' />
             </Badge>
-          </Box>
+          {/* </Box> */}
           {/* <Button color="inherit">Login</Button> */}
         </Toolbar>
       </AppBar>
-      {location.pathname === '/' && <SubHeader/> }
+      {location.pathname === '/' && <SubHeader />}
     </Box>
   );
 }

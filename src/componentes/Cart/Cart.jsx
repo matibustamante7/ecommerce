@@ -84,7 +84,7 @@ export default function Cart() {
     }
 
     return (
-        <Container >
+        <Container sx={{p:7}} >
             <Typography variant="h2" textAlign='center' margin='2rem'>Shopping cart</Typography>
             <Divider />
             {

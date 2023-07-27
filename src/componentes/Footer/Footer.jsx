@@ -4,6 +4,7 @@ import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import EmailIcon from '@mui/icons-material/Email';
 import { Link } from "react-router-dom";
+import theme from "../../theme";
 export default function Footer() {
 
     const email = 'matias.dev7@gmail.com';
@@ -11,8 +12,8 @@ export default function Footer() {
 
     const mailToLink = `mailto:${email}?subject=${encodeURIComponent(subject)}`;
     return(
-        <Container maxWidth>
-            <Box sx={{p:2,mt:10, borderTop:1, textAlign:'center', display:'flex', justifyContent:"center"}}>
+        <Container maxWidth  sx={{backgroundColor:theme.palette.background.main, height:'100%'}}>
+            <Box sx={{p:2,mt:10, textAlign:'center', display:'flex', justifyContent:"center"}}>
                 <Typography variant="body2" fontSize='10px'>Matias Bustamante <CopyrightIcon sx={{fontSize:10}}/></Typography>
             </Box>
             <Box sx={{display:'flex', justifyContent:'center', gap:2}}>

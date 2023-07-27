@@ -33,7 +33,7 @@ export default function Home() {
                 direction="row"
                 justifyContent="center"
                 alignItems="center"
-                sx={{pt:10 }} 
+                sx={{p:4, }} 
                 rowSpacing={{ xs: 1, sm: 2, md: 3 }}
                 columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
                 {

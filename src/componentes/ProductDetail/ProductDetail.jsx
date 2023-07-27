@@ -27,21 +27,23 @@ export default function ProductDetail() {
     //    console.log(productDetail);
    }
 
-    return (
-        <Container sx={{ maxWidth: '25rem', mt: 10, p: 2 }}>
-
-            <Typography onClick={handleBack}
-                sx={{mb: 5,
+    return (<Container sx={{ marginBottom:'10rem '}}>
+        <Typography onClick={handleBack}
+                sx={{
                     width:'2rem',
                     display: 'flex',
                     alignItems: 'center',
-                    fontSize: 20,
+                    fsontSize: 20,
                     cursor: 'pointer',
                     color: theme.palette.secondary.main,
                     '&:hover': {
                       color: theme.palette.button.delete,},
                 }}>
                     <ArrowBackIcon /> Back</Typography>
+        <Container sx={{ maxWidth: '10rem', height:'100%', mt: 10, pb:20, boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.2)',
+        borderRadius: '8px', display:'flex', flexDirection:'column', p:'2rem'}}>
+
+            
 
             <Box sx={{ display: 'flex', alignItems: 'center', gap: 4, }}>
                 <Paper
@@ -60,6 +62,6 @@ export default function ProductDetail() {
                       onClick={()=>handleAddToCart(productDetail)}>Add to cart</Button>
                 </Box>
             </Box>
-        </Container>
+        </Container></Container>
     )
 }

@@ -25,7 +25,7 @@ export default function SubHeader() {
         // console.log(e.target.value);
     }
     return (
-        <Container sx={{  p:2, backgroundColor: theme.palette.background.subheader, minWidth:'100%', display:'flex', justifyContent:'space-around'}}>
+        <Container sx={{  p:2, backgroundColor: theme.palette.background.main, minWidth:'100%', display:'flex', justifyContent:'space-around', mt:'4rem'}}>
             <Box
                 sx={{
                     display: 'flex',

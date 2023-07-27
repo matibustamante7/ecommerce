@@ -9,9 +9,9 @@ import Login from "./componentes/Login/Login";
 
 function App() {
   return (
-    <div className="App" >
+    <div className="App" style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }} >
       <Header/>
-      <Routes>
+      <Routes style={{ flexGrow: 1 }}>
         <Route path="/" element={<Productos/>}/>
         <Route path="/:id" element={<ProductDetail/>}/>
         <Route path='/cart' element={<Cart/>}/>
