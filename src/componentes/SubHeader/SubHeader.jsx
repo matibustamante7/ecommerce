@@ -25,16 +25,17 @@ export default function SubHeader() {
         // console.log(e.target.value);
     }
     return (
-        < >
+        <Container sx={{  p:2, backgroundColor: theme.palette.background.subheader, minWidth:'100%', display:'flex', justifyContent:'space-around'}}>
             <Box
                 sx={{
                     display: 'flex',
                     flexDirection: 'row',
                     justifyContent: 'space-around',
-                    backgroundColor: theme.palette.background.subheader,
-                    p:2,
+                    maxWidth:'800px',
+                    gap:10
                 }}
             >
+        
                 <FormControl>
                     <InputLabel id="select-price">Price</InputLabel>
                     <Select
@@ -84,6 +85,6 @@ export default function SubHeader() {
                     </Select>
                 </FormControl>
             </Box>
-        </>
+        </Container>
     )
 }

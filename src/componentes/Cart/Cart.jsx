@@ -5,6 +5,8 @@ import { deleteProduct, emptyCart, newCantProdCart } from "../../redux/actions";
 import theme from "../../theme";
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { useEffect, useState } from "react";
+import { Wallet, initMercadoPago } from "@mercadopago/sdk-react";
+import axios from "axios";
 
 export default function Cart() {
 
@@ -44,8 +46,41 @@ export default function Cart() {
         return totalCartPrice.toFixed(2);
     }
 
-    const handleBuy = () => {
-        alert('vamos a mp');
+
+
+    //preferences mercadopago
+    const [preferences, setPreferences] = useState(null);
+    initMercadoPago('public_key')
+
+
+    const createPreference = async (cartItems) => {
+        console.log(cartItems);
+        try {
+            // Recorre cada producto del carrito y crea un arreglo de objetos con los datos necesarios
+            const items = cartItems.map((producto) => ({
+                title: producto.title,
+                unit_price: parseFloat(producto.price),
+                quantity: parseInt(producto.cantidad),
+                currency_id: "ARS",
+            }));
+            // Realiza la solicitud a tu backend para crear la preferencia en MercadoPago
+            const response = await axios.post('http://localhost:3001/create_preference', {
+                items, // Pasamos el arreglo de objetos con los datos de los productos
+            });
+
+            // Obtenemos el ID de preferencia desde la respuesta del backend
+            const { id } = response.data;
+            return id;
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    const handleBuy = async () => {
+        const id = await createPreference(cartItems); // Pasamos cartItems como argumento
+        if (id) {
+            setPreferences(id);
+        }
     }
 
     return (
@@ -70,8 +105,8 @@ export default function Cart() {
                                     label='Amount'
                                     type="number"
                                     value={producto.cantidad}
-                                    onChange={(e) => handleChangeCountProd(producto.id, parseInt(e.target.value))} 
-                                    sx={{maxWidth:'5rem'}}/>
+                                    onChange={(e) => handleChangeCountProd(producto.id, parseInt(e.target.value))}
+                                    sx={{ maxWidth: '5rem' }} />
                                 <Typography>Total Product: <b>${(totalProd = producto.price * producto.cantidad).toFixed(2)}</b></Typography>
 
                             </Box>
@@ -107,11 +142,14 @@ export default function Cart() {
                             >
                                 Buy <ShoppingCartIcon color="" />
                             </Button>
+                            {preferences &&
+                                <Wallet initialization={{ preferenceId: preferences }} />
+                            }
                             <Typography variant="h5">Total cart: ${totalCart()}</Typography>
                         </Box>
                     </Box>
                 ) : (
-                    <Typography variant="h3" sx={{ textAlign: 'center' }}>El carrito esta vacio</Typography>
+                    <Typography variant="h3" sx={{ textAlign: 'center' }}>The cart is empty</Typography>
                 )
             }
 

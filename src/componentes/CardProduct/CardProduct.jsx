@@ -8,12 +8,13 @@ import Typography from '@mui/material/Typography';
 import theme from '../../theme';
 import { useNavigate } from 'react-router-dom';
 import { Rating } from '@mui/material';
+import {initMercadopago, Wallet} from "@mercadopago/sdk-react";
 
 export default function CardProduct({producto, addToCartProp}) {
 
-  
-    const navigate = useNavigate();
+   
 
+    const navigate = useNavigate();
     const handleDetail = () =>{
       navigate(`/${producto.id}`)
       // console.log('log de id en handle ', producto.id);

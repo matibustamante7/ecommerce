@@ -14,7 +14,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { useDispatch, useSelector } from 'react-redux';
 import { searchBarProduct } from '../../redux/actions';
-import { Badge } from '@mui/material';
+import { Badge, Typography } from '@mui/material';
 
 export default function ButtonAppBar() {
 
@@ -75,6 +75,7 @@ export default function ButtonAppBar() {
       },
     },
   }));
+
   const goToCart = () => {
     navigate('/cart')
   }
@@ -94,11 +95,7 @@ export default function ButtonAppBar() {
       <AppBar position="static" sx={{ backgroundColor: theme.palette.primary.main }}>
         <Toolbar sx={{ display: 'flex', justifyContent: 'space-between', width: '60%', m: 'auto' }}>
 
-          <Button variant='contained'
-            onClick={() => hadleGoHome()}
-            sx={{ minWidth: '5rem' }}>
-            ReactShop
-          </Button>
+            <Typography variant='h5'onClick={() => hadleGoHome()} sx={{color:theme.palette.background.subHeader, cursor:"pointer"}}>React Shop</Typography>
 
 
           <Search sx={{ width: 'xl' }}
